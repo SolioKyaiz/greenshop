@@ -11,6 +11,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,7 +26,7 @@ INSTALLED_APPS = [
 
     'account.apps.AccountConfig',
     'product.apps.ProductConfig',
-    'post.apps.PostConfig'
+    'post.apps.PostConfig',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,32 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Greenshop Admin",
+    "site_header": "Greenshop",
+    "site_brand": "Greenshop",
+    "site_logo_classes": "img-circle",
+    "welcome_sign": "Welcome to the NEO Fund Admin!",
+    "search_model": ["account.User"],
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "Users", "model": "account.User", "url": "/admin/account/user/"},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "hide_apps": [],
+    "hide_models": [],
+    "order_with_respect_to": ["user"],
+
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+    "related_modal_active": False,
+    "use_google_fonts_cdn": True,
+    "show_ui_builder": False,
+    "changeform_format": "horizontal_tabs",
+    "changeform_format_overrides": {
+        "auth.user": "collapsible",
+        "auth.group": "vertical_tabs",
+    },
+}
